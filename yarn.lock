@@ -5800,10 +5800,6 @@ reduce-function-call@^1.0.1:
   dependencies:
     balanced-match "^0.4.2"
 
-redux-infinite-scroll@^1.0.9:
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/redux-infinite-scroll/-/redux-infinite-scroll-1.0.9.tgz#d0bba2ca5a7e6b6aac42eeef5f7d0036c56aaf1f"
-
 redux-thunk@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.3.0.tgz#51c2c19a185ed5187aaa9a2d08b666d0d6467622"

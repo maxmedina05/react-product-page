@@ -3,9 +3,14 @@ import PropTypes from 'prop-types';
 import ReviewListRow from './ReviewListRow';
 import ReviewListRowHeader from './ReviewListRowHeader';
 import InfiniteScroll from 'react-infinite-scroller';
-import './ReviewListRow.css';
 
-const ReviewList = ({ reviews, filter, hasMore, fetchMoreReviews }) => {
+const ReviewList = ({
+  reviews,
+  filter,
+  isLoading,
+  hasMore,
+  fetchMoreReviews
+}) => {
   let reviewList = null;
 
   if (filter.groupBy === '') {
@@ -24,7 +29,11 @@ const ReviewList = ({ reviews, filter, hasMore, fetchMoreReviews }) => {
   }
 
   return (
-    <InfiniteScroll pageStart={1} hasMore={hasMore} loadMore={fetchMoreReviews}>
+    <InfiniteScroll
+      pageStart={1}
+      hasMore={!isLoading && hasMore}
+      loadMore={fetchMoreReviews}
+    >
       {reviewList}
     </InfiniteScroll>
   );

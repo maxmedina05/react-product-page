@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import './Filter.css';
 
+const ENTER_KEY = 13;
+
 export default class Filter extends Component {
   constructor(props) {
     super(props);
 
     this.handleChange = this.handleChange.bind(this);
     this.handleRefreshClick = this.handleRefreshClick.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
 
     this.state = {
       query: '',
@@ -18,6 +21,12 @@ export default class Filter extends Component {
       fourStar: true,
       fiveStar: true
     };
+  }
+
+  handleKeyPress(event) {
+    if (event.keyCode === ENTER_KEY) {
+      this.handleRefreshClick();
+    }
   }
 
   handleRefreshClick() {
@@ -57,6 +66,7 @@ export default class Filter extends Component {
               onChange={this.handleChange}
               placeholder="Search"
               className="form-control"
+              onKeyDown={this.handleKeyPress}
             />
             <i className="fas fa-search" />
           </div>

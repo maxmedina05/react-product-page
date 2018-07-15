@@ -1,7 +1,7 @@
 import React from 'react';
 import Moment from 'moment';
 import PropTypes from 'prop-types';
-
+import './ReviewListRow.css';
 import StarsRating from '../stars-rating/StarsRating';
 
 const trimText = text => {
