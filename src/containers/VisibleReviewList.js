@@ -15,24 +15,13 @@ const groupByWeek = ({ reviewCreated }) =>
 const filterReviews = (reviews, filter) => {
   let results = reviews;
 
-  let temp = [];
-  if (filter.oneStar) {
-    temp = temp.concat(results.filter(x => x.stars === 1));
-  }
-  if (filter.twoStar) {
-    temp = temp.concat(results.filter(x => x.stars === 2));
-  }
-  if (filter.threeStar) {
-    temp = temp.concat(results.filter(x => x.stars === 3));
-  }
-  if (filter.fourStar) {
-    temp = temp.concat(results.filter(x => x.stars === 4));
-  }
-  if (filter.fiveStar) {
-    temp = temp.concat(results.filter(x => x.stars === 5));
-  }
-
-  results = temp;
+  results = results.filter(x => {
+    if (filter.oneStar && x.stars === 1) return x;
+    if (filter.twoStar && x.stars === 2) return x;
+    if (filter.threeStar && x.stars === 3) return x;
+    if (filter.fourStar && x.stars === 4) return x;
+    if (filter.fiveStar && x.stars === 5) return x;
+  });
 
   if (!isStringEmptyOrNull(filter.query)) {
     const re = new RegExp(filter.query, 'i');
