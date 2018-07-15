@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import ReviewListRow from './ReviewListRow';
 import ReviewListRowHeader from './ReviewListRowHeader';
