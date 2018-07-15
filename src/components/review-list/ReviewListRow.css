@@ -13,11 +13,7 @@
 .review-list-row > .review-list-header {
   display: inline-block;
   margin-bottom: 16px;
-}
-
-.review-list-row > .review-list-header .label {
-  font-size: 0.69em;
-  color: #747474;
+  color: #414b4d;
 }
 
 .review-list-row > .review-list-header > span {
@@ -27,14 +23,21 @@
   margin-right: 64px;
 }
 
+.review-list-row > .review-list-header .label {
+  font-size: 0.69em;
+  color: #82939d;
+}
+
 .review-list-row > .review-list-header > span:first-child {
   margin-right: 24px;
 }
 
 .review-title {
+  color: #414b4d;
   margin-bottom: 0.3em;
 }
 
 .review-content {
+  color: #82939d;
   margin-bottom: 0;
 }

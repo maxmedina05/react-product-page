@@ -1,0 +1,171 @@
+.filter-container {
+  padding: 32px;
+  max-width: 576px;
+}
+
+.search-field {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.search-field input {
+  text-indent: 8px;
+  border-color: #58b3e2;
+  color: #58b3e2;
+  border-radius: 18px;
+}
+
+.search-field input::placeholder {
+  color: #58b3e2;
+  opacity: 1;
+}
+
+.search-field i {
+  color: #58b3e2;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 14px;
+}
+
+.dropdown-field {
+  position: relative;
+}
+
+.dropdown-field > i {
+  color: #58b3e2;
+  position: absolute;
+  top: 12px;
+  right: 32px;
+  font-size: 14px;
+}
+
+.dropdown-field select {
+  text-indent: 8px;
+  border-color: #58b3e2;
+  color: #58b3e2;
+  border-radius: 18px;
+  appearance: none;
+}
+
+.dropdown-field select option:disabled {
+  color: #82939d;
+}
+
+.dropdown-field select option {
+  color: #58b3e2;
+}
+
+.dropdown-field select option:checked {
+  color: #58b3e2;
+}
+
+/*
+  Checkbox style
+*/
+
+.squarly-checkbox {
+  position: relative;
+  display: inline-block;
+  color: rgba(0, 0, 0, 0.87);
+  cursor: pointer;
+  font-family: 'Roboto', 'Segoe UI', BlinkMacSystemFont, system-ui,
+    -apple-system;
+  font-size: 14px;
+  line-height: 18px;
+  margin-right: 12px;
+}
+
+.squarly-checkbox span {
+  color: #d8d8d8;
+}
+
+.squarly-checkbox > input {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  position: absolute;
+  z-index: -1;
+  left: -15px;
+  top: -15px;
+  display: block;
+  margin: 0;
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  background-color: rgba(0, 0, 0, 0.42);
+  outline: none;
+  opacity: 0;
+  transform: scale(1);
+  -ms-transform: scale(0); /* Graceful degradation for IE */
+  /* transition: opacity 0.5s, transform 0.5s; */
+}
+
+.squarly-checkbox > input:checked {
+  background-color: #fff;
+}
+
+.squarly-checkbox:active > input {
+  opacity: 1;
+  transform: scale(0);
+  transition: opacity 0s, transform 0s;
+}
+
+.squarly-checkbox > input:disabled {
+  opacity: 0;
+}
+
+.squarly-checkbox > input:disabled + span {
+  cursor: initial;
+}
+
+.squarly-checkbox > span::before {
+  content: '';
+  display: inline-block;
+  margin-right: 6px;
+  border: solid 2px #58b3e2;
+  border-radius: 4px;
+  width: 18px;
+  height: 18px;
+  vertical-align: -4px;
+  transition: border-color 0.5s, background-color 0.5s;
+}
+
+.squarly-checkbox > input:checked + span::before {
+  border-color: #58b3e2;
+  background-color: #fff;
+}
+
+.squarly-checkbox > input:active + span::before {
+  border-color: #58b3e2;
+}
+
+.squarly-checkbox > input:checked:active + span::before {
+  border-color: transparent;
+  background-color: rgba(0, 0, 0, 0.42);
+}
+
+.squarly-checkbox > input:disabled + span::before {
+  border-color: rgba(0, 0, 0, 0.26);
+}
+
+.squarly-checkbox > input:checked:disabled + span::before {
+  border-color: transparent;
+  background-color: rgba(0, 0, 0, 0.26);
+}
+
+.squarly-checkbox > span::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+
+.squarly-checkbox > input:checked + span::after {
+  border-color: #fff;
+  background-color: #58b3e2;
+}
