@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Moment from 'moment';
 import ReviewListRow from './ReviewListRow';
+import './ReviewListRowHeader.css';
 
 window.moment = Moment;
 const MONTH_NAMES = [

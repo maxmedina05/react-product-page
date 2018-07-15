@@ -10,7 +10,7 @@ export default class Filter extends Component {
 
     this.state = {
       query: '',
-      groupBy: 'month',
+      groupBy: '',
       orderBy: 'desc',
       oneStar: true,
       twoStar: true,

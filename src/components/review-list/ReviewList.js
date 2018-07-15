@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReviewListRow from './ReviewListRow';
 import ReviewListRowHeader from './ReviewListRowHeader';
+import InfiniteScroll from 'react-infinite-scroller';
 import './ReviewListRow.css';
 
-const ReviewList = ({ reviews, filter }) => {
+const ReviewList = ({ reviews, filter, hasMore, fetchMoreReviews }) => {
+  let reviewList = null;
+
   if (filter.groupBy === '') {
-    const reviewList = reviews.map(review => (
+    reviewList = reviews.map(review => (
       <ReviewListRow key={review.reviewId} review={review} />
     ));
-    return <div>{reviewList}</div>;
   } else {
-    const reviewListWithHeader = reviews.map(({ header, reviews }) => (
+    reviewList = reviews.map(({ header, reviews }) => (
       <ReviewListRowHeader
         key={header}
         header={header}
@@ -19,8 +21,13 @@ const ReviewList = ({ reviews, filter }) => {
         groupBy={filter.groupBy}
       />
     ));
-    return <div>{reviewListWithHeader}</div>;
   }
+
+  return (
+    <InfiniteScroll pageStart={1} hasMore={hasMore} loadMore={fetchMoreReviews}>
+      {reviewList}
+    </InfiniteScroll>
+  );
 };
 
 ReviewList.propTypes = {

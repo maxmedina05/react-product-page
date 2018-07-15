@@ -20,7 +20,7 @@ export default function reviewReducer(
       return {
         ...state,
         isLoading: false,
-        payload: action.payload,
+        payload: action.payload.concat(state.payload),
         hasMore: action.hasMore
       };
     case REVIEWS_FETCH_FAILURE:

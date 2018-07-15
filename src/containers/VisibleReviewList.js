@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { fetchReviews } from '../actions/review.action';
 import ReviewList from '../components/review-list/ReviewList';
 import _ from 'lodash';
 import Moment from 'moment';
@@ -11,6 +12,18 @@ const groupByDay = ({ reviewCreated }) =>
   new Moment(reviewCreated).format('YYYY-MM-DD');
 const groupByWeek = ({ reviewCreated }) =>
   new Moment(reviewCreated).format('YYYY[W]WW');
+
+const aggregationToArray = aggregate => {
+  const result = Object.keys(aggregate).map(key => {
+    if (aggregate.hasOwnProperty(key)) {
+      return {
+        header: key,
+        reviews: aggregate[key]
+      };
+    }
+  });
+  return result;
+};
 
 const filterReviews = (reviews, filter) => {
   let results = reviews;
@@ -29,30 +42,19 @@ const filterReviews = (reviews, filter) => {
   }
 
   if (!isStringEmptyOrNull(filter.orderBy)) {
-    results = _.orderBy(results, 'created', filter.orderBy);
+    results = _.orderBy(results, 'reviewCreated', filter.orderBy);
   }
 
   if (!isStringEmptyOrNull(filter.groupBy)) {
-    switch (filter.groupBy) {
-      case 'day':
-        results = _.groupBy(results, groupByDay);
-        break;
-      case 'month':
-        results = _.groupBy(results, groupByMonth);
-        break;
-      case 'week':
-        results = _.groupBy(results, groupByWeek);
-        break;
+    if (filter.groupBy === 'day') {
+      results = aggregationToArray(_.groupBy(results, groupByDay));
     }
-
-    results = Object.keys(results).map(key => {
-      if (results.hasOwnProperty(key)) {
-        return {
-          header: key,
-          reviews: results[key]
-        };
-      }
-    });
+    if (filter.groupBy === 'month') {
+      results = aggregationToArray(_.groupBy(results, groupByMonth));
+    }
+    if (filter.groupBy === 'week') {
+      results = aggregationToArray(_.groupBy(results, groupByWeek));
+    }
   }
 
   return results;
@@ -61,13 +63,18 @@ const filterReviews = (reviews, filter) => {
 const mapStateToProps = ({ reviews, filter }) => {
   return {
     reviews: filterReviews(reviews.payload, filter),
+    hasMore: reviews.hasMore,
     isLoading: reviews.isLoading,
     error: reviews.error,
     filter
   };
 };
 
+const mapDispatchToProps = dispatch => ({
+  fetchMoreReviews: page => dispatch(fetchReviews(page))
+});
+
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(ReviewList);
