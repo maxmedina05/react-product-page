@@ -22,6 +22,10 @@
   width: 140px;
 }
 
+.Filter button.btn-default:hover {
+  background-color: #1297c4;
+}
+
 .search-field {
   position: relative;
   margin-bottom: 16px;
@@ -65,6 +69,11 @@
   color: #58b3e2;
   border-radius: 18px;
   appearance: none;
+}
+
+.dropdown-field select:disabled {
+  opacity: 0.5;
+  background-color: #fff;
 }
 
 .dropdown-field select option:disabled {
