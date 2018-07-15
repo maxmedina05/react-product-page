@@ -18,8 +18,10 @@ export default class Filter extends Component {
         <div className="row">
           <div className="col form-group dropdown-field">
             <select className="form-control">
-              <option disabled>Group By</option>
-              <option selected>Group by day</option>
+              <option selected disabled>
+                Group By
+              </option>
+              <option>Group by day</option>
               <option>Group by week</option>
               <option>Group by month</option>
             </select>
@@ -28,16 +30,18 @@ export default class Filter extends Component {
 
           <div className="col form-group dropdown-field">
             <select className="form-control">
-              <option disabled>Order By</option>
-              <option selected>ASC</option>
-              <option>DESC</option>
+              <option selected disabled>
+                Order by
+              </option>
+              <option>Order by Asc</option>
+              <option>Order by Desc</option>
             </select>
             <i className="fas fa-caret-down" />
           </div>
         </div>
 
         <div className="form-group">
-          <h6>FILTER BY:</h6>
+          <h6 className="filterby">FILTER BY:</h6>
           <label className="squarly-checkbox">
             <input type="checkbox" />
             <span>

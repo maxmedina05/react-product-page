@@ -49,6 +49,7 @@
 }
 
 .dropdown-field select option:disabled {
+  font-weight: bold;
   color: #82939d;
 }
 
@@ -58,6 +59,12 @@
 
 .dropdown-field select option:checked {
   color: #58b3e2;
+}
+
+.filterby {
+  font-size: 0.8em;
+  color: #d8d8d8;
+  font-weight: bold;
 }
 
 /*
@@ -78,6 +85,7 @@
 
 .squarly-checkbox span {
   color: #d8d8d8;
+  font-weight: bold;
 }
 
 .squarly-checkbox > input {
