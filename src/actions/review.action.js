@@ -27,12 +27,11 @@ const showErrorMessage = message => {
 };
 
 export const fetchReviews = page => async dispatch => {
-  dispatch(fetchReviewsRequest);
+  dispatch(fetchReviewsRequest());
   try {
     const response = await ReviewService.getReviews(page);
     dispatch(fetchReviewsSuccess(response.reviews, response.hasMore));
   } catch (ex) {
-    console.log(ex);
     const error = ex.response ? ex.response.data.error : ex;
     let message = error.message || error;
 
