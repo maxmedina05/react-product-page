@@ -1,6 +1,25 @@
+.Filter {
+  max-width: 792px;
+}
+
 .filter-container {
   padding: 32px;
   max-width: 576px;
+}
+
+.Filter .refresh-button {
+  text-align: right;
+  margin-bottom: 16px;
+}
+
+.Filter button.btn-default {
+  border-radius: 18px;
+  font-size: 0.8em;
+  font-weight: bold;
+  color: #fff;
+  background-color: #82939d;
+  height: 30px;
+  width: 140px;
 }
 
 .search-field {
