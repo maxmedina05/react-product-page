@@ -6,7 +6,7 @@ import ReviewList from '../containers/VisibleReviewList';
 
 export default class ReviewListPage extends Component {
   componentDidMount() {
-    this.props.fetchReviews(1);
+    // this.props.fetchReviews(1);
   }
 
   render() {

@@ -71,6 +71,10 @@
   appearance: none;
 }
 
+.dropdown-field select:focus {
+  color: #58b3e2;
+}
+
 .dropdown-field select:disabled {
   opacity: 0.5;
   background-color: #fff;

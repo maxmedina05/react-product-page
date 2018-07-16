@@ -8,7 +8,7 @@ export default function reviewReducer(
   state = {
     isLoading: false,
     error: false,
-    hasMore: false,
+    hasMore: true,
     payload: []
   },
   action
@@ -20,7 +20,7 @@ export default function reviewReducer(
       return {
         ...state,
         isLoading: false,
-        payload: action.payload.concat(state.payload),
+        payload: state.payload.concat(action.payload),
         hasMore: action.hasMore
       };
     case REVIEWS_FETCH_FAILURE:

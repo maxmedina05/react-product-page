@@ -4,40 +4,47 @@ import ReviewListRow from './ReviewListRow';
 import ReviewListRowHeader from './ReviewListRowHeader';
 import InfiniteScroll from 'react-infinite-scroller';
 
-const ReviewList = ({
-  reviews,
-  filter,
-  isLoading,
-  hasMore,
-  fetchMoreReviews
-}) => {
-  let reviewList = null;
+class ReviewList extends React.Component {
+  constructor(props) {
+    super(props);
 
-  if (filter.groupBy === '') {
-    reviewList = reviews.map(review => (
-      <ReviewListRow key={review.reviewId} review={review} />
-    ));
-  } else {
-    reviewList = reviews.map(({ header, reviews }) => (
-      <ReviewListRowHeader
-        key={header}
-        header={header}
-        reviews={reviews}
-        groupBy={filter.groupBy}
-      />
-    ));
+    this.handleLoadMore = this.handleLoadMore.bind(this);
   }
 
-  return (
-    <InfiniteScroll
-      pageStart={1}
-      hasMore={!isLoading && hasMore}
-      loadMore={fetchMoreReviews}
-    >
-      {reviewList}
-    </InfiniteScroll>
-  );
-};
+  handleLoadMore(page) {
+    this.props.fetchMoreReviews(page);
+  }
+
+  render() {
+    const { reviews, filter, isLoading, hasMore } = this.props;
+    let reviewList = null;
+
+    if (filter.groupBy === '') {
+      reviewList = reviews.map(review => (
+        <ReviewListRow key={review.reviewId} review={review} />
+      ));
+    } else {
+      reviewList = reviews.map(({ header, reviews }) => (
+        <ReviewListRowHeader
+          key={header}
+          header={header}
+          reviews={reviews}
+          groupBy={filter.groupBy}
+        />
+      ));
+    }
+
+    return (
+      <InfiniteScroll
+        pageStart={0}
+        hasMore={!isLoading && hasMore}
+        loadMore={this.handleLoadMore}
+      >
+        {reviewList}
+      </InfiniteScroll>
+    );
+  }
+}
 
 ReviewList.propTypes = {
   reviews: PropTypes.array.isRequired

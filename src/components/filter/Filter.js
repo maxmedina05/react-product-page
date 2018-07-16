@@ -79,7 +79,7 @@ export default class Filter extends Component {
                 value={groupBy}
                 onChange={this.handleChange}
               >
-                <option selected disabled value="">
+                <option disabled value="">
                   Group By
                 </option>
                 <option value="day">Group by day</option>
@@ -97,7 +97,7 @@ export default class Filter extends Component {
                 value={orderBy}
                 onChange={this.handleChange}
               >
-                <option selected disabled value="">
+                <option disabled value="">
                   Order by
                 </option>
                 <option value="asc">Order by Asc</option>

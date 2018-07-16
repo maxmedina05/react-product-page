@@ -14,14 +14,14 @@ const groupByWeek = ({ reviewCreated }) =>
   new Moment(reviewCreated).format('YYYY[W]WW');
 
 const aggregationToArray = aggregate => {
-  const result = Object.keys(aggregate).map(key => {
-    if (aggregate.hasOwnProperty(key)) {
+  const result = Object.keys(aggregate)
+    .filter(key => aggregate.hasOwnProperty(key))
+    .map(key => {
       return {
         header: key,
         reviews: aggregate[key]
       };
-    }
-  });
+    });
   return result;
 };
 
@@ -34,6 +34,8 @@ const filterReviews = (reviews, filter) => {
     if (filter.threeStar && x.stars === 3) return x;
     if (filter.fourStar && x.stars === 4) return x;
     if (filter.fiveStar && x.stars === 5) return x;
+
+    return undefined;
   });
 
   if (!isStringEmptyOrNull(filter.query)) {
